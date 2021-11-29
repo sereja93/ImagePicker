@@ -198,13 +198,13 @@ open class ImagePickerController: UIViewController {
   func presentAskPermissionAlert() {
     let alertController = UIAlertController(title: configuration.requestPermissionTitle, message: configuration.requestPermissionMessage, preferredStyle: .alert)
 
-    let alertAction = UIAlertAction(title: configuration.OKButtonTitle, style: .default) { _ in
+    let alertAction = UIAlertAction(title: configuration.dialogYesButtonTitle, style: .default) { _ in
       if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
         UIApplication.shared.openURL(settingsURL)
       }
     }
 
-    let cancelAction = UIAlertAction(title: configuration.cancelButtonTitle, style: .cancel) { _ in
+    let cancelAction = UIAlertAction(title: configuration.dialogNoButtonTitle, style: .cancel) { _ in
       self.dismiss(animated: true, completion: nil)
     }
 

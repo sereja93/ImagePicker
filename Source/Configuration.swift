@@ -24,8 +24,9 @@ import UIKit
 
   // MARK: Titles
 
-  @objc public var OKButtonTitle = "OK"
+  @objc public var dialogYesButtonTitle = "OK"
   @objc public var cancelButtonTitle = "Cancel"
+  @objc public var dialogNoButtonTitle  = "Cancel"
   @objc public var doneButtonTitle = "Done"
   @objc public var noImagesTitle = "No images available"
   @objc public var noCameraTitle = "Camera is not available"
