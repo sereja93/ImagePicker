@@ -178,11 +178,12 @@ class CameraView: UIViewController, CLLocationManagerDelegate, CameraManDelegate
     if #available(iOS 9.0, *) {
       noCameraLabel.translatesAutoresizingMaskIntoConstraints = false
       noCameraLabel.numberOfLines = 0
+      noCameraLabel.textAlignment = .center
       noCameraLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
       noCameraLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
     }
     noCameraButton.center = CGPoint(x: centerX,
-                                    y: noCameraLabel.frame.maxY + 20)
+                                    y: noCameraLabel.frame.maxY + 40)
     
     blurView.frame = view.bounds
     containerView.frame = view.bounds
