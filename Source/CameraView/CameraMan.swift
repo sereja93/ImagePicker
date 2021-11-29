@@ -164,9 +164,11 @@ class CameraMan {
               completion?()
             }
             return
-        }
+          }
         if savePhoto {
           self.savePhoto(image, location: location, completion: completion)
+        } else {
+          completion?()
         }
       }
     }
