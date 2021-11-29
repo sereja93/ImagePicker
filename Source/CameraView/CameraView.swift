@@ -50,6 +50,9 @@ class CameraView: UIViewController, CLLocationManagerDelegate, CameraManDelegate
     label.font = self.configuration.noCameraFont
     label.textColor = self.configuration.noCameraColor
     label.text = self.configuration.noCameraTitle
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.numberOfLines = 0
+    label.textAlignment = .center
     label.sizeToFit()
     
     return label
@@ -175,11 +178,6 @@ class CameraView: UIViewController, CLLocationManagerDelegate, CameraManDelegate
     noCameraLabel.center = CGPoint(x: centerX,
                                    y: view.bounds.height / 2 - 80)
     
-    if #available(iOS 9.0, *) {
-      noCameraLabel.translatesAutoresizingMaskIntoConstraints = false
-      noCameraLabel.numberOfLines = 0
-      noCameraLabel.textAlignment = .center
-    }
     noCameraButton.center = CGPoint(x: centerX,
                                     y: noCameraLabel.frame.maxY + 40)
     
@@ -308,8 +306,11 @@ class CameraView: UIViewController, CLLocationManagerDelegate, CameraManDelegate
       show ? view.addSubview($0) : $0.removeFromSuperview()
     }
     if show {
-      noCameraLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-      noCameraLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+      if #available(iOS 9.0, *) {
+        noCameraLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        noCameraLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        
+      }
     }
   }
   
