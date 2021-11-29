@@ -174,7 +174,11 @@ class CameraView: UIViewController, CLLocationManagerDelegate, CameraManDelegate
 
     noCameraLabel.center = CGPoint(x: centerX,
       y: view.bounds.height / 2 - 80)
-
+    
+    if #available(iOS 9.0, *) {
+      noCameraLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+      noCameraLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+    }
     noCameraButton.center = CGPoint(x: centerX,
       y: noCameraLabel.frame.maxY + 20)
 
