@@ -55,7 +55,7 @@ import UIKit
   @objc public var allowVolumeButtonsToTakePicture = true
   @objc public var useLowResolutionPreviewImage = false
   @objc public var galleryOnly = false
-  @objc public var saveImage = false
+  @objc public var saveImage = true
 
   // MARK: Images
   @objc public var indicatorView: UIView = {

@@ -201,6 +201,7 @@ open class ImagePickerController: UIViewController {
     let alertAction = UIAlertAction(title: configuration.dialogYesButtonTitle, style: .default) { _ in
       if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
         UIApplication.shared.openURL(settingsURL)
+        self.dismiss(animated: false, completion: nil)
       }
     }
 
