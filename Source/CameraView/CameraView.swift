@@ -169,26 +169,28 @@ class CameraView: UIViewController, CLLocationManagerDelegate, CameraManDelegate
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-
+    
     let centerX = view.bounds.width / 2
-
+    
     noCameraLabel.center = CGPoint(x: centerX,
-      y: view.bounds.height / 2 - 80)
+                                   y: view.bounds.height / 2 - 80)
     
     if #available(iOS 9.0, *) {
+      noCameraLabel.translatesAutoresizingMaskIntoConstraints = false
+      noCameraLabel.numberOfLines = 0
       noCameraLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
       noCameraLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
     }
     noCameraButton.center = CGPoint(x: centerX,
-      y: noCameraLabel.frame.maxY + 20)
-
+                                    y: noCameraLabel.frame.maxY + 20)
+    
     blurView.frame = view.bounds
     containerView.frame = view.bounds
     capturedImageView.frame = view.bounds
   }
-
+  
   // MARK: - Actions
-
+  
   @objc func settingsButtonDidTap() {
     DispatchQueue.main.async {
       if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
