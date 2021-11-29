@@ -2,7 +2,7 @@ import Foundation
 import AVFoundation
 import PhotosUI
 
-protocol CameraManDelegate: class {
+protocol CameraManDelegate: AnyObject {
   func cameraManNotAvailable(_ cameraMan: CameraMan)
   func cameraManDidStart(_ cameraMan: CameraMan)
   func cameraMan(_ cameraMan: CameraMan, didChangeInput input: AVCaptureDeviceInput)
@@ -149,7 +149,7 @@ class CameraMan {
     }
   }
 
-  func takePhoto(_ previewLayer: AVCaptureVideoPreviewLayer, location: CLLocation?, completion: (() -> Void)? = nil) {
+  func takePhoto(_ previewLayer: AVCaptureVideoPreviewLayer, _ savePhoto: Bool,  location: CLLocation?, completion: (() -> Void)? = nil) {
     guard let connection = stillImageOutput?.connection(with: AVMediaType.video) else { return }
 
     connection.videoOrientation = Helper.videoOrientation()
@@ -165,8 +165,9 @@ class CameraMan {
             }
             return
         }
-
-        self.savePhoto(image, location: location, completion: completion)
+        if savePhoto {
+          self.savePhoto(image, location: location, completion: completion)
+        }
       }
     }
   }

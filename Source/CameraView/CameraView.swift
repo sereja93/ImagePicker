@@ -2,7 +2,7 @@ import UIKit
 import AVFoundation
 import PhotosUI
 
-protocol CameraViewDelegate: class {
+protocol CameraViewDelegate: AnyObject {
   
   func setFlashButtonHidden(_ hidden: Bool)
   func imageToLibrary()
@@ -230,7 +230,7 @@ class CameraView: UIViewController, CLLocationManagerDelegate, CameraManDelegate
       })
     })
     
-    cameraMan.takePhoto(previewLayer, location: locationManager?.latestLocation) {
+    cameraMan.takePhoto(previewLayer, configuration.saveImage, location: locationManager?.latestLocation) {
       completion()
       self.delegate?.imageToLibrary()
     }
